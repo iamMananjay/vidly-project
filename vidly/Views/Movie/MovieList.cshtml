@@ -1,0 +1,37 @@
+﻿@model vidly.ViewModel.MovieCustomerViewModel
+
+@{
+    ViewBag.Title = "MovieList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*--------------------------Razor syntax-------------------------------
+    Razor supports C# and uses the @ symbol to transition from HTML to C#.
+     Razor evaluates C# expressions and renders them in the HTML output.*@
+@{
+    var className = Model.Customer.Count > 2 ? "Popular" : null;
+}
+
+
+<h2 class="@className">
+    @*select the property of viewmodel where model movie pass and access the name*@
+    @Model.Movie.Name
+</h2>
+
+
+@if (Model.Customer.Count == 0)
+{
+
+
+    <p>No list</p> }
+else
+{
+    <ul>
+        @foreach (var customerlist in Model.Customer)
+        {
+            <li>@customerlist.CustomerName</li>
+        }
+    </ul>
+
+}
+
